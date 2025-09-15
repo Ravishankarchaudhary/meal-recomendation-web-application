@@ -1,0 +1,99 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: url('register2_img.jpg') no-repeat center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container */
+.container {
+  background: rgb(255, 255, 255);
+  padding: 30px;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  text-align: center;
+
+
+  background: rgba(164, 84, 19, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(233, 148, 57, 0.3);
+}
+
+/* Heading */
+.container h2 {
+  margin-bottom: 20px;
+  color: rgb(244, 241, 241);
+}
+
+/* Input Group */
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: rgb(252, 250, 250);
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid rgb(204, 204, 204);
+  outline: none;
+  transition: border 0.3s;
+}
+
+.input-group input:focus {
+  border: 1px solid rgb(239, 52, 35);
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: rgb(250, 24, 3);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: rgb(246, 68, 55);
+}
+
+/* Redirect Links */
+.redirect {
+  color: white;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.redirect a {
+  color: rgb(16, 35, 246);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.redirect a:hover {
+  text-decoration: underline;
+}
