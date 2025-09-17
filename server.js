@@ -70,6 +70,7 @@ app.post("/login", async (req, res) => {
 // ===== Recipe Search API =====
 app.get("/api/recipes", async (req, res) => {
   try {
+    
     const search = req.query.search || "";
     const apiKey = process.env.SPOONACULAR_API_KEY;
 
@@ -83,15 +84,17 @@ app.get("/api/recipes", async (req, res) => {
           apiKey: apiKey,
         },
       }
+      
     );
-
+    
     const results = response.data.results.map(r => ({
       id: r.id,
       name: r.title,
       image: r.image,
-      link: `recipe.html?id=${r.id}`, // link to detailed page
+      link: `/Recipie/recipe.html?id=${r.id}`, // link to detailed page
       recipe: r.summary,
     }));
+    console.log("API Response results count:", response.data.results.length); 
 
     res.json(results);
   } catch (err) {
@@ -101,7 +104,7 @@ app.get("/api/recipes", async (req, res) => {
 });
 
 // ===== Detailed Recipe API =====
-app.get("/api/recipe/:id", async (req, res) => {
+app.get("/api/recipes/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const apiKey = process.env.SPOONACULAR_API_KEY;

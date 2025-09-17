@@ -7,7 +7,7 @@ const imageEl = document.getElementById("recipe-image");
 const instructionsEl = document.getElementById("recipe-instructions");
 
 if (recipeId) {
-  fetch(`/api/recipe/${recipeId}`)
+  fetch(`/api/recipes/${recipeId}`)
     .then(res => res.json())
     .then(data => {
       titleEl.textContent = data.title;
