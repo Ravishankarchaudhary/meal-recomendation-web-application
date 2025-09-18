@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f8f9fa;
+  color: #333;
+}
+
+header {
+  background: rgb(34, 49, 63);
+  padding: 15px 50px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: rgb(250, 249, 249);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffd700;
+}
+
+/* Contact Section */
+.contact-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-container h1 {
+  color: #2d89ef;
+  margin-bottom: 10px;
+}
+
+.contact-container p {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.contact-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.contact-card h2 {
+  color: #2d89ef;
+  margin-bottom: 15px;
+}
+
+.contact-card p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.note {
+  margin-top: 25px;
+  padding: 15px;
+  background: #eaf3ff;
+  border-left: 5px solid #2d89ef;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #333;
+}
+
+footer {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgb(34, 49, 63);
+  color: white;
+  text-align: center;
+  font-size: 14px;
+}

@@ -33,6 +33,14 @@ app.get("/register", (req, res) => {
 app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "public/Login", "login1.html"));
 });
+// About Page
+app.get("/About", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/About", "About.html"));
+});
+// Contact Page
+app.get("/Contact", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/Contact", "Contact.html"));
+});
 
 // ===== User Auth =====
 app.post("/register", async (req, res) => {
