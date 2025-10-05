@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINAL</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <link href="/recipie_homePage/style.css" rel="stylesheet">
+</head>
+
+<body class="min-h-screen flex flex-col">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 shadow-lg">
+        <!-- Background image -->
+        <div class="absolute inset-0 bg-[url('main1.jpg')] bg-cover bg-center"></div>
+
+        <!-- Subtle dark neutral overlay -->
+        <div class="absolute inset-0 bg-black/50"></div>
+
+        <!-- Nav content -->
+        <div class="relative z-10 container mx-auto flex flex-col sm:flex-row justify-between items-center p-5">
+
+            <!-- Logo / Title -->
+            <h1 class="text-3xl font-bold tracking-wide text-gray-100 mb-4 sm:mb-0 drop-shadow-md">
+               🍴 Meal Recommender
+            </h1>
+
+            <!-- Buttons -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="nav-btn bg-white/90 text-gray-800 font-medium px-6 py-2 rounded-full shadow-sm 
+               hover:bg-gray-200 hover:text-black transition duration-300 ease-in-out transform hover:scale-105"
+                    data-target="home-page"> Recipe Search </button>
+
+                <button class="nav-btn bg-white/90 text-gray-800 font-medium px-6 py-2 rounded-full shadow-sm 
+               hover:bg-gray-200 hover:text-black transition duration-300 ease-in-out transform hover:scale-105"
+                    data-target="health-page"> Health Recommendations </button>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Main Content Area -->
+    <main class="flex-grow py-10 px-6 bg-[url('main2.jpg')] bg-cover bg-center pt-24">
+        <section id="home-page" class="page-section hidden p-8 rounded-2xl shadow-xl bg-white/80 backdrop-blur-md">
+            <!-- Home/Recipe Search Page Layout -->
+            <!-- Title -->
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center tracking-tight">
+                Find Your Perfect Recipe
+            </h2>
+
+            <!-- Search Bar -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                <!-- Input with SVG icon -->
+                <div class="relative flex-grow">
+                    <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
+                        <!-- Heroicons search icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.65 6.65a7.5 7.5 0 016.5 9.5z" />
+                        </svg>
+                    </span>
+
+                    <input id="search-input" type="text" placeholder="Search by ingredient or dish..." class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-sm 
+                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                      text-gray-700 placeholder-gray-400 bg-white">
+                </div>
+
+                <!-- Clear button (hidden by default) -->
+                <button id="clear-btn" class="hidden px-3 py-2 bg-gray-200 hover:bg-gray-300 rounded-r-md">
+                    ✖
+                </button>
+                <!-- Search Button -->
+
+                <button id="search-btn" class="bg-blue-600 text-white font-medium px-8 py-3 rounded-xl shadow-md
+               hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105">
+                    Search
+                </button>
+
+                <!-- Recipe Search Results -->
+                <div id="search-results" class="mt-6"></div>
+                <p id="no-results-message" class="hidden text-gray-600 mt-4">No recipes found.</p>
+                <div id="recipe-loading-spinner" class="hidden">Loading...</div>
+            </div>
+
+
+            <!-- Filters -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+
+                <!-- Cuisine Filter -->
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-3 flex items-center text-gray-400 pointer-events-none">
+                        🌍
+                    </span>
+                    <select class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-sm 
+                   bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 
+                   hover:border-blue-400 transition duration-200 ease-in-out">
+                        <option value="">Filter by Cuisine</option>
+                        <option value="italian">Italian</option>
+                        <option value="indian">Indian</option>
+                        <option value="mexican">Mexican</option>
+                        <option value="chinese">Chinese</option>
+                    </select>
+                </div>
+
+                <!-- Meal Type Filter -->
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-3 flex items-center text-gray-400 pointer-events-none">
+                        🍽️
+                    </span>
+                    <select class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-sm 
+                   bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 
+                   hover:border-blue-400 transition duration-200 ease-in-out">
+                        <option value="">Filter by Meal Type</option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="snack">Snack</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Recipe Search Results Grid -->
+            <div id="recipe-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
+
+            <!-- Featured Recipes -->
+            <h3 class="text-2xl font-semibold mb-4">Featured Recipes</h3>
+            <div id="featured-recipes" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            </div>
+        </section>
+
+        <!-- 3. Health-Based Recommendation Page Layout -->
+        <section id="health-page" class="page-section hidden p-8 rounded-2xl shadow-xl bg-white/80 backdrop-blur-md">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Get Your Personalized Meal Plan</h2>
+
+            <div class="flex flex-col sm:flex-row gap-4 mb-8 items-center justify-center">
+                <!-- Dietary Needs -->
+                <div class="flex flex-col">
+                    <label for="dietary-input" class="text-lg text-gray-700 font-medium mb-1">Select Dietary
+                        Needs:</label>
+                    <select id="dietary-input"
+                        class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700 w-64">
+                        <option value="">--Select a Goal--</option>
+                        <option value="weight-loss">Weight Loss</option>
+                        <option value="weight-gain">Weight Gain</option>
+                        <option value="high-protein">High Protein</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="balanced">Balanced Diet</option>
+                    </select>
+                </div>
+
+                <!-- Health Condition -->
+                <div class="flex flex-col">
+                    <label for="health-input" class="text-lg text-gray-700 font-medium mb-1">Select Health
+                        Condition:</label>
+                    <select id="health-input"
+                        class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700 w-64">
+                        <option value="">--Select a Symptom--</option>
+                        <option value="fever">Fever</option>
+                        <option value="diarrhea">Loose Motions / Diarrhea</option>
+                        <option value="cold-cough">Cold & Cough</option>
+                        <option value="weakness">Weakness (Post-Recovery)</option>
+                        <option value="food-poisoning">Food Poisoning</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Generate Button -->
+            <div class="text-center mb-6">
+                <button id="get-meal-plan-btn"
+                    class="bg-green-600 text-white px-8 py-3 rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out">
+                    Get Meal Plan
+                </button>
+            </div>
+
+            <!-- Recommendation Display Area -->
+            <div id="recommendation-results"
+                class="bg-white p-6 rounded-lg shadow-inner border border-gray-200 min-h-[300px]">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Recommended Meal Plan:</h3>
+                <p id="initial-recommendation-message" class="text-gray-500 text-center py-10">
+                    Select dietary needs and health condition above, then click "Get Meal Plan".
+                </p>
+                <div id="health-loading-spinner" class="hidden">Loading...</div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8 mt-0">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+
+                <!-- Logo / About -->
+                <div>
+                    <h2 class="text-xl font-semibold text-white mb-2">Smart Recipe Recommender</h2>
+                    <p class="text-sm">
+                        Discover healthy, personalized recipes based on your taste, health, and lifestyle.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-3">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="hover:text-teal-400 transition">Home</a></li>
+                        <li><a href="#recipes" class="hover:text-teal-400 transition">Recipes</a></li>
+                        <li><a href="#health" class="hover:text-teal-400 transition">Health Plans</a></li>
+                        <li><a href="/About" class="hover:text-teal-400 transition">About</a></li>
+                        <li><a href="/Contact" class="hover:text-teal-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+<!-- Social Media -->
+<div>
+    <h3 class="text-lg font-semibold text-white mb-3">Follow Us</h3>
+    <div class="flex justify-center md:justify-start space-x-4 text-xl">
+        <a href="#" class="hover:text-teal-400 transition"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-teal-400 transition"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-teal-400 transition"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-teal-400 transition"><i class="fas fa-envelope"></i></a>
+    </div>
+</div>
+
+            </div>
+            <!-- Divider -->
+            <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-500">
+                &copy; 2025 Smart Recipe Recommender. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    <!-- Recipe Detail Modal -->
+    <div id="recipe-detail-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden overflow-y-auto z-50">
+        <div class="modal-content bg-white rounded-2xl shadow-xl max-w-2xl w-full p-6 relative mx-auto">
+            <!-- Close Button -->
+            <button onclick="closeRecipeModal()"
+                class="modal-close-btn absolute top-3 right-3 text-gray-500 hover:text-gray-800">
+                ✖
+            </button>
+
+            <!-- Title -->
+            <h2 id="modal-recipe-title" class="text-2xl font-bold mb-4"></h2>
+
+            <!-- Image -->
+            <img id="modal-recipe-image" src="" alt="" class="w-full h-60 object-cover rounded-lg mb-4">
+
+            <!-- Ingredients -->
+            <h3 class="text-lg font-semibold mt-4">Ingredients</h3>
+            <ul id="modal-ingredients-list" class="list-disc pl-6 space-y-1"></ul>
+
+            <!-- Instructions -->
+            <h3 class="text-lg font-semibold mt-4">Instructions</h3>
+            <ul id="modal-instructions-list" class="list-decimal pl-6 space-y-1"></ul>
+
+            <!-- Nutrition -->
+            <h3 class="text-lg font-semibold mt-4">Nutrition Info</h3>
+            <ul id="modal-nutrition-info" class="list-disc pl-6 space-y-1"></ul>
+
+            <!-- Source Link -->
+            <a id="modal-source-link" href="#" target="_blank" class="text-blue-600 hover:underline mt-4 inline-block">
+                View Full Recipe
+            </a>
+        </div>
+    </div>
+
+    <script src="/recipie_homePage/script.js"></script>
+</body>
+
+</html>

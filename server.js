@@ -1,9 +1,10 @@
+
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const bcrypt = require("bcrypt");
 const axios = require("axios");
-
+``
 // Import DB and Models
 const connectDB = require("./db");
 const User = require("./models/user");
@@ -42,6 +43,12 @@ app.get("/Contact", (req, res) => {
   res.sendFile(path.join(__dirname, "public/Contact", "Contact.html"));
 });
 
+//Recipe HomePage
+app.get("/homepage", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/recipie_homePage", "index.html"));
+});
+
+
 // ===== User Auth =====
 app.post("/register", async (req, res) => {
   try {
@@ -68,7 +75,7 @@ app.post("/login", async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).send("Invalid password!");
 
-    res.send("User logged in successfully!");
+    res.redirect("/homepage");
   } catch (err) {
     console.log(err);
     res.status(500).send("Error logging in...");
