@@ -10,6 +10,9 @@ body {
   align-items: center;
   position: relative;
 }
+html,body {
+  overflow: hidden;
+}
 
 /* Dark overlay for readability */
 .overlay {
