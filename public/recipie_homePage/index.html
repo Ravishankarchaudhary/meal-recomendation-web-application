@@ -28,7 +28,7 @@
 
             <!-- Logo / Title -->
             <h1 class="text-3xl font-bold tracking-wide text-gray-100 mb-4 sm:mb-0 drop-shadow-md">
-               🍴 Meal Recommender
+               
             </h1>
 
             <!-- Buttons -->
@@ -224,6 +224,13 @@
         <a href="#" class="hover:text-teal-400 transition"><i class="fab fa-instagram"></i></a>
         <a href="#" class="hover:text-teal-400 transition"><i class="fas fa-envelope"></i></a>
     </div>
+    <!-- Logout Button -->
+      <div class="mt-4 text-center md:text-left">
+          <button id="logout-btn" class="bg-red-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-700 transition duration-300">
+               Logout
+         </button>
+       </div>
+
 </div>
 
             </div>
@@ -266,6 +273,32 @@
             </a>
         </div>
     </div>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+      const username = localStorage.getItem("username");
+      const title = document.querySelector("nav h1");
+
+      if (username) {
+        // Navbar me welcome message
+        title.innerHTML = `🍴 Welcome, <span class="text-teal-300 font-semibold">${username}</span>`;
+
+        // Logout button ke sath username show karna
+        const logoutBtn = document.getElementById("logout-btn");
+        if (logoutBtn) {
+            logoutBtn.innerHTML = `Logout (${username})`;
+
+            logoutBtn.addEventListener("click", () => {
+                // ✅ LocalStorage clear
+                localStorage.removeItem("username");
+
+                // ✅ Redirect to login/start page
+                window.location.href = "/HomePage/startpage.html"; // ya jahan login page hai
+               });
+           }
+          }
+       });
+</script>
 
     <script src="/recipie_homePage/script.js"></script>
 </body>

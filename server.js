@@ -69,17 +69,19 @@ app.post("/login", async (req, res) => {
     const { username, password } = req.body;
 
     const user = await User.findOne({ username });
-    if (!user) return res.status(400).send("User not found!");
+    if (!user) return res.status(400).json({ error: "User not found!" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).send("Invalid password!");
+    if (!isMatch) return res.status(400).json({ error: "Invalid password!" });
 
-    res.redirect("/homepage");
+    // ✅ Send username in JSON response instead of redirect
+    res.status(200).json({ username: user.username });
   } catch (err) {
     console.log(err);
-    res.status(500).send("Error logging in...");
+    res.status(500).json({ error: "Error logging in..." });
   }
 });
+
 
 // ===== Recipe Search API =====
 app.get("/api/recipes", async (req, res) => {
