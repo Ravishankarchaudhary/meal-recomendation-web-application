@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FINAL</title>
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS  -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
     <link href="/recipie_homePage/style.css" rel="stylesheet">
 </head>
 
@@ -28,7 +26,7 @@
 
             <!-- Logo / Title -->
             <h1 class="text-3xl font-bold tracking-wide text-gray-100 mb-4 sm:mb-0 drop-shadow-md">
-               
+                
             </h1>
 
             <!-- Buttons -->
@@ -89,42 +87,40 @@
                 <div id="recipe-loading-spinner" class="hidden">Loading...</div>
             </div>
 
-
-            <!-- Filters -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-
+            <!-- Filters Section -->
+            <div class="flex flex-col md:flex-row gap-4 mt-4">
                 <!-- Cuisine Filter -->
-                <div class="relative">
-                    <span class="absolute inset-y-0 left-3 flex items-center text-gray-400 pointer-events-none">
-                        🌍
-                    </span>
-                    <select class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-sm 
-                   bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 
-                   hover:border-blue-400 transition duration-200 ease-in-out">
+                <div class="relative w-full md:w-1/2">
+                    <span
+                        class="absolute inset-y-0 left-3 flex items-center text-gray-400 pointer-events-none">🌍</span>
+                    <select id="cuisineFilter" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-sm bg-white text-gray-700 
+      focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-400 transition duration-200 ease-in-out">
                         <option value="">Filter by Cuisine</option>
-                        <option value="italian">Italian</option>
-                        <option value="indian">Indian</option>
-                        <option value="mexican">Mexican</option>
-                        <option value="chinese">Chinese</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Continental">Continental</option>
+                        <option value="Chinese">Chinese</option>
                     </select>
                 </div>
 
                 <!-- Meal Type Filter -->
-                <div class="relative">
-                    <span class="absolute inset-y-0 left-3 flex items-center text-gray-400 pointer-events-none">
-                        🍽️
-                    </span>
-                    <select class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-sm 
-                   bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 
-                   hover:border-blue-400 transition duration-200 ease-in-out">
+                <div class="relative w-full md:w-1/2">
+                    <span
+                        class="absolute inset-y-0 left-3 flex items-center text-gray-400 pointer-events-none">🍽️</span>
+                    <select id="mealTypeFilter" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-sm bg-white text-gray-700 
+      focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-400 transition duration-200 ease-in-out">
                         <option value="">Filter by Meal Type</option>
-                        <option value="breakfast">Breakfast</option>
-                        <option value="lunch">Lunch</option>
-                        <option value="dinner">Dinner</option>
-                        <option value="snack">Snack</option>
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                        <option value="Snack">Snack</option>
                     </select>
                 </div>
             </div>
+            <!-- Recipe Results Section -->
+<div id="recipeResults" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
+
+
             <!-- Recipe Search Results Grid -->
             <div id="recipe-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
 
@@ -141,30 +137,30 @@
             <div class="flex flex-col sm:flex-row gap-4 mb-8 items-center justify-center">
                 <!-- Dietary Needs -->
                 <div class="flex flex-col">
-                    <label for="dietary-input" class="text-lg text-gray-700 font-medium mb-1">Select Dietary
+                    <label for="dietSelect" class="text-lg text-gray-700 font-medium mb-1">Select Dietary
                         Needs:</label>
-                    <select id="dietary-input"
+                    <select id="diet-select"
                         class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700 w-64">
                         <option value="">--Select a Goal--</option>
                         <option value="weight-loss">Weight Loss</option>
                         <option value="weight-gain">Weight Gain</option>
-                        <option value="high-protein">High Protein</option>
-                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
                         <option value="balanced">Balanced Diet</option>
+                        <option value="non-vegetarian">non-vegetarian</option>
                     </select>
                 </div>
 
                 <!-- Health Condition -->
                 <div class="flex flex-col">
-                    <label for="health-input" class="text-lg text-gray-700 font-medium mb-1">Select Health
+                    <label for="symptomInput" class="text-lg text-gray-700 font-medium mb-1">Select Health
                         Condition:</label>
-                    <select id="health-input"
+                    <select id="health-select"
                         class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700 w-64">
                         <option value="">--Select a Symptom--</option>
                         <option value="fever">Fever</option>
-                        <option value="diarrhea">Loose Motions / Diarrhea</option>
+                        <option value="diarrhea">Diarrhea</option>
                         <option value="cold-cough">Cold & Cough</option>
-                        <option value="weakness">Weakness (Post-Recovery)</option>
+                        <option value="weakness">Weakness(Post-Recovery)</option>
                         <option value="food-poisoning">Food Poisoning</option>
                     </select>
                 </div>
@@ -181,12 +177,22 @@
             <!-- Recommendation Display Area -->
             <div id="recommendation-results"
                 class="bg-white p-6 rounded-lg shadow-inner border border-gray-200 min-h-[300px]">
-                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Recommended Meal Plan:</h3>
-                <p id="initial-recommendation-message" class="text-gray-500 text-center py-10">
-                    Select dietary needs and health condition above, then click "Get Meal Plan".
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                    To Get Recommended Meal Plan:
+                </h3>
+                <p id="initial-diet-message" class="text-gray-500 text-center py-10">
+                    Select dietary needs OR health condition above, then click "Get Meal Plan".
                 </p>
-                <div id="health-loading-spinner" class="hidden">Loading...</div>
             </div>
+
+            <!-- ✅ Keep spinners outside so they aren’t cleared -->
+            <div id="health-loading-spinner" class="hidden flex justify-center items-center">
+                <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-600"></div>
+            </div>
+            <div id="diet-loading-spinner" class="hidden flex justify-center items-center">
+                <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-600"></div>
+            </div>
+
         </section>
 
     </main>
@@ -208,28 +214,29 @@
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-3">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="/" class="hover:text-teal-400 transition">Home</a></li>
-                        <li><a href="#recipes" class="hover:text-teal-400 transition">Recipes</a></li>
-                        <li><a href="#health" class="hover:text-teal-400 transition">Health Plans</a></li>
-                        <li><a href="/About" class="hover:text-teal-400 transition">About</a></li>
-                        <li><a href="/Contact" class="hover:text-teal-400 transition">Contact</a></li>
+                        <li><a href="index.html" class="hover:text-teal-400 transition">Home</a></li>
+                     <!--     <li><a href="#recipes" class="hover:text-teal-400 transition">Recipes</a></li>  -->
+                      <!--  <li><a href="#health" class="hover:text-teal-400 transition">Health Plans</a></li>    -->
+                        <li><a href="about.html" class="hover:text-teal-400 transition">About</a></li>
+                        <li><a href="contact.html" class="hover:text-teal-400 transition">Contact</a></li>
                     </ul>
                 </div>
-<!-- Social Media -->
-<div>
-    <h3 class="text-lg font-semibold text-white mb-3">Follow Us</h3>
-    <div class="flex justify-center md:justify-start space-x-4 text-xl">
-        <a href="#" class="hover:text-teal-400 transition"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="hover:text-teal-400 transition"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="hover:text-teal-400 transition"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="hover:text-teal-400 transition"><i class="fas fa-envelope"></i></a>
-    </div>
-    <!-- Logout Button -->
-      <div class="mt-4 text-center md:text-left">
-          <button id="logout-btn" class="bg-red-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-700 transition duration-300">
+                <!-- Social Media -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-3">Follow Us</h3>
+                    <div class="flex justify-center md:justify-start space-x-4 text-xl">
+                        <a href="#" class="hover:text-teal-400 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-teal-400 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-teal-400 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-teal-400 transition"><i class="fas fa-envelope"></i></a>
+                    </div>
+
+                    <!-- Logout Button -->
+           <div class="mt-4 text-center md:text-left">
+              <button id="logout-btn" class="bg-red-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-700 transition duration-300">
                Logout
-         </button>
-       </div>
+              </button>
+          </div>
 
 </div>
 
@@ -273,7 +280,7 @@
             </a>
         </div>
     </div>
-    
+
     <script>
       document.addEventListener("DOMContentLoaded", () => {
       const username = localStorage.getItem("username");
@@ -300,6 +307,7 @@
        });
 </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="/recipie_homePage/script.js"></script>
 </body>
 
