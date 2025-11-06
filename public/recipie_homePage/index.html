@@ -130,7 +130,20 @@
             </div>
         </section>
 
-        <!-- 3. Health-Based Recommendation Page Layout -->
+        
+                </h3>
+                <p id="initial-diet-message" class="text-gray-500 text-center py-10">
+                    Select dietary needs OR health condition above, then click "Get Meal Plan".
+                </p>
+            </div>
+
+            <!-- ✅ Keep spinners outside so they aren’t cleared -->
+            <div id="health-loading-spinner" class="hidden flex justify-center items-center">
+                <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-600"></div>
+            </div>
+            <div id="diet-loading-spinner" class="hidden flex justify-center items-center">
+                <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-600"></div>
+            </div><!-- 3. Health-Based Recommendation Page Layout -->
         <section id="health-page" class="page-section hidden p-8 rounded-2xl shadow-xl bg-white/80 backdrop-blur-md">
             <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Get Your Personalized Meal Plan</h2>
 
@@ -152,7 +165,7 @@
 
                 <!-- Health Condition -->
                 <div class="flex flex-col">
-                    <label for="symptomInput" class="text-lg text-gray-700 font-medium mb-1">Select Health
+                    <label for="health-select" class="text-lg text-gray-700 font-medium mb-1">Select Health
                         Condition:</label>
                     <select id="health-select"
                         class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700 w-64">
@@ -174,24 +187,17 @@
                 </button>
             </div>
 
+            <p id="initial-health-message" class="text-gray-600 text-center mb-4">
+                   Select a health condition to get your recommended meal plan.
+            </p>
+             <!-- <div id="recommendation-results" class="space-y-4"></div>  -->
+
+
             <!-- Recommendation Display Area -->
             <div id="recommendation-results"
-                class="bg-white p-6 rounded-lg shadow-inner border border-gray-200 min-h-[300px]">
+                class="bg-white p-6 rounded-lg shadow-inner border border-gray-200 min-h-[300px]"> div>  
                 <h3 class="text-2xl font-semibold text-gray-800 mb-4">
                     To Get Recommended Meal Plan:
-                </h3>
-                <p id="initial-diet-message" class="text-gray-500 text-center py-10">
-                    Select dietary needs OR health condition above, then click "Get Meal Plan".
-                </p>
-            </div>
-
-            <!-- ✅ Keep spinners outside so they aren’t cleared -->
-            <div id="health-loading-spinner" class="hidden flex justify-center items-center">
-                <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-600"></div>
-            </div>
-            <div id="diet-loading-spinner" class="hidden flex justify-center items-center">
-                <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-600"></div>
-            </div>
 
         </section>
 

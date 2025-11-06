@@ -927,16 +927,25 @@ function closeRecipeModal() {
 
 // 🌿 Health Recommendations (Improved UI Version)
 function getHealthRecommendations() {
-  const initialHealthMessage = document.getElementById('initial-diet-message');
+ // const initialHealthMessage = document.getElementById('initial-diet-message');
+  const initialHealthMessage = document.getElementById('initial-health-message');
+
   const recommendationResults = document.getElementById('recommendation-results');
   const healthLoadingSpinner = document.getElementById('health-loading-spinner');
   const symptomInput = document.getElementById('health-select');
 
-  initialHealthMessage.classList.add('hidden');
-  recommendationResults.innerHTML = '';
-  healthLoadingSpinner.classList.remove('hidden');
+  // 🧹 Reset previous content before showing new data
+  if (initialHealthMessage) initialHealthMessage.classList.add('hidden');
+  if (recommendationResults) recommendationResults.innerHTML = '';
+  if (healthLoadingSpinner) healthLoadingSpinner.classList.remove('hidden');
 
   const selectedSymptom = symptomInput.value;
+
+  // ✅ Clear any diet spinner safely
+  const dietLoadingSpinner = document.getElementById('diet-loading-spinner');
+  const initialDietMessage = document.getElementById('initial-diet-message');
+  if (dietLoadingSpinner) dietLoadingSpinner.classList.add('hidden');
+  if (initialDietMessage) initialDietMessage.classList.add('hidden');
 
   setTimeout(() => {
     healthLoadingSpinner.classList.add('hidden');
@@ -1017,18 +1026,25 @@ recommendationResults.innerHTML = `
   </div>
 `;
 
-// attach click event after button is added
-document.getElementById("download-meal-plan").addEventListener("click", () => {
-  const element = document.getElementById("recommendation-results");
-  const opt = {
-    margin: 0.5,
-    filename: "Meal_Plan.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
-  };
-  html2pdf().set(opt).from(element).save();
-});
+ 
+// ✅ PDF button (safe, works every time without refresh)
+setTimeout(() => {
+  const downloadBtn = document.getElementById("download-meal-plan");
+  if (downloadBtn) {
+    downloadBtn.onclick = () => {
+      const element = document.getElementById("recommendation-results");
+      const opt = {
+        margin: 0.5,
+        filename: "Meal_Plan.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
+      };
+      html2pdf().set(opt).from(element).save();
+    };
+  }
+}, 100);
+
 
 
     } else {
@@ -1162,7 +1178,7 @@ recommendationResults.innerHTML = `
   </div>
 `;
 
-// attach click event after button is added
+ /* // attach click event after button is added
 document.getElementById("download-meal-plan").addEventListener("click", () => {
   const element = document.getElementById("recommendation-results");
   const opt = {
@@ -1173,10 +1189,27 @@ document.getElementById("download-meal-plan").addEventListener("click", () => {
     jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
   };
   html2pdf().set(opt).from(element).save();
-});
+}); */
 
+  // ✅ safer PDF button (no refresh issue)
+setTimeout(() => {
+  const downloadBtn = document.getElementById("download-meal-plan");
+  if (downloadBtn) {
+    downloadBtn.onclick = () => {
+      const element = document.getElementById("recommendation-results");
+      const opt = {
+        margin: 0.5,
+        filename: "Meal_Plan.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
+      };
+      html2pdf().set(opt).from(element).save();
+    };
+  }
+ }, 100);
 
-    } else {
+     } else {
       recommendationResults.innerHTML = `
         <div class="text-center py-10">
           <h3 class="text-2xl font-semibold text-gray-800 mb-4">Recommended Meal Plan</h3>
