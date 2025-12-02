@@ -38,7 +38,7 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
   const password = document.getElementById("password").value;
 
   // Strong Password Regex
-  const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
 
   if (!strongPassword.test(password)) {
     alert("Use uppercase, lowercase, number , special character & minimum length(8) ");
@@ -48,6 +48,17 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
   // Strong password → Submit form
   this.submit();
 });
+</script>
+
+<script>
+  window.onload = function () {
+    const params = new URLSearchParams(window.location.search);
+    const error = params.get("error");
+
+    if (error) {
+      alert(error);    // popup alert
+    }
+  };
 </script>
 
 

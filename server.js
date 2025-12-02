@@ -53,7 +53,7 @@ app.post("/register", async (req, res) => {
     const { username, email, password } = req.body;
 
     // 🚨 Strong Password Regex
-    const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
 
    if (!strongPassword.test(password)) {
 
@@ -74,7 +74,7 @@ app.post("/register", async (req, res) => {
     res.redirect("/login");
   } catch (err) {
     console.log(err);
-    res.status(500).send("Error registering user. Username/Email might already exist.");
+    return res.redirect('/register?error=User+already+exists');
   }
 });
 
