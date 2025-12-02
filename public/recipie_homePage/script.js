@@ -575,7 +575,7 @@ const healthRecommendationsData = {
       "Take enough rest and avoid heavy physical activity."
     ],
     recipes: [
-      { title: "Vegetable Khichdi", image: "veg_khichdi.jpg", desc: "Soft and easily digestible comfort meal." },
+      { title: "Vegetable Khichdi", image: "veg_khichdi.png", desc: "Soft and easily digestible comfort meal." },
       { title: "Lemon Coriander Soup", image: "lemon_soup.jpg", desc: "Refreshing soup that helps boost recovery." }
     ]
   },
@@ -593,8 +593,8 @@ const healthRecommendationsData = {
       "Eat small, frequent meals instead of large portions."
     ],
     recipes: [
-      { title: "Moong Dal Khichdi", image: "moong_khichdi.jpg", desc: "Gentle on the stomach and nutrient-rich." },
-      { title: "Rice Curd Bowl", image: "rice_curd.jpg", desc: "Helps soothe the digestive system." }
+      { title: "Moong Dal Khichdi", image: "moong_khichdi.png", desc: "Gentle on the stomach and nutrient-rich." },
+      { title: "Rice Curd Bowl", image: "rice_curd.png", desc: "Helps soothe the digestive system." }
     ]
   },
 
@@ -611,8 +611,8 @@ const healthRecommendationsData = {
       "Include ginger, garlic, and honey in your diet."
     ],
     recipes: [
-      { title: "Ginger-Lemon Tea", image: "ginger_tea.jpg", desc: "Natural immunity booster and throat soother." },
-      { title: "Pepper Garlic Soup", image: "pepper_soup.jpg", desc: "Spicy broth that helps clear nasal congestion." }
+      { title: "Ginger-Lemon Tea", image: "tea.png", desc: "Natural immunity booster and throat soother." },
+      { title: "Pepper Garlic Soup", image: "soup.png", desc: "Spicy broth that helps clear nasal congestion." }
     ]
   },
 
@@ -629,8 +629,8 @@ const healthRecommendationsData = {
       "Add nuts, seeds, and fruits to your daily diet."
     ],
     recipes: [
-      { title: "Spinach Dal", image: "spinach_dal.jpg", desc: "Iron-rich and comforting lentil dish." },
-      { title: "Paneer Stir Fry", image: "paneer_stir.jpg", desc: "High-protein dish for strength and recovery." }
+      { title: "Spinach Dal", image: "spinach_dal.png", desc: "Iron-rich and comforting lentil dish." },
+      { title: "Paneer Stir Fry", image: "paneer_fry.png", desc: "High-protein dish for strength and recovery." }
     ]
   },
 
@@ -647,8 +647,8 @@ const healthRecommendationsData = {
       "Avoid dairy and spicy food for a few days."
     ],
     recipes: [
-      { title: "Plain Moong Dal", image: "plain_dal.jpg", desc: "Light and easy to digest, perfect for recovery." },
-      { title: "Vegetable Clear Soup", image: "clear_soup.jpg", desc: "Keeps you hydrated and nourished." }
+      { title: "Plain Moong Dal", image: "moong_dal.png", desc: "Light and easy to digest, perfect for recovery." },
+      { title: "Vegetable Clear Soup", image: "veg_soup.png", desc: "Keeps you hydrated and nourished." }
     ]
   }
 };
@@ -667,8 +667,8 @@ const dietRecommendationsData = {
       "Have small, frequent meals instead of heavy portions."
     ],
     recipes: [
-      { title: "Grilled Paneer Salad", desc: "A high-protein, low-fat option.", image: "https://source.unsplash.com/400x300/?salad" },
-      { title: "Detox Smoothie", desc: "Spinach, banana, and flax seeds blend.", image: "https://source.unsplash.com/400x300/?smoothie" }
+      { title: "Grilled Paneer Salad", desc: "A high-protein, low-fat option.", image: "paneer_salad.png" },
+      { title: "Detox Smoothie", desc: "Spinach, banana, and flax seeds blend.", image: "smoothie.png" }
     ]
   },
 
@@ -685,8 +685,8 @@ const dietRecommendationsData = {
       "Avoid skipping meals."
     ],
     recipes: [
-      { title: "Protein Smoothie", desc: "Banana, milk, oats, and honey.", image: "https://source.unsplash.com/400x300/?protein-shake" },
-      { title: "Paneer Bhurji Wrap", desc: "Perfect post-lunch meal.", image: "https://source.unsplash.com/400x300/?wrap" }
+      { title: "Protein Smoothie", desc: "Banana, milk, oats, and honey.", image: "milk_smoothie.png" },
+      { title: "Paneer Bhurji Wrap", desc: "Perfect post-lunch meal.", image: "paneer_wrap.png" }
     ]
   },
 
@@ -703,8 +703,8 @@ const dietRecommendationsData = {
       "Use olive oil or ghee in moderation."
     ],
     recipes: [
-      { title: "Veg Pulao", desc: "Lightly spiced rice with vegetables.", image: "https://source.unsplash.com/400x300/?pulao" },
-      { title: "Paneer Curry", desc: "High-protein, rich in calcium.", image: "https://source.unsplash.com/400x300/?paneer" }
+      { title: "Veg Pulao", desc: "Lightly spiced rice with vegetables.", image: "veg_pulao.png" },
+      { title: "Paneer Curry", desc: "High-protein, rich in calcium.", image: "paneer_curry.png" }
     ]
   },
 
@@ -721,8 +721,8 @@ const dietRecommendationsData = {
       "Stay hydrated and active."
     ],
     recipes: [
-      { title: "Mixed Veg Soup", desc: "Light and full of fiber.", image: "https://source.unsplash.com/400x300/?soup" },
-      { title: "Grilled Chicken Salad", desc: "Perfect balanced protein meal.", image: "https://source.unsplash.com/400x300/?chicken-salad" }
+      { title: "Mixed Veg Soup", desc: "Light and full of fiber.", image: "veg_soup.png" },
+      { title: "Grilled Chicken Salad", desc: "Perfect balanced protein meal.", image: "grilled_chicken.png" }
     ]
   },
 
@@ -739,8 +739,8 @@ const dietRecommendationsData = {
       "Avoid red meat more than twice a week."
     ],
     recipes: [
-      { title: "Grilled Chicken", desc: "Juicy and protein-packed.", image: "https://source.unsplash.com/400x300/?grilled-chicken" },
-      { title: "Fish Curry", desc: "Lightly spiced and omega-3 rich.", image: "https://source.unsplash.com/400x300/?fish-curry" }
+      { title: "Grilled Chicken", desc: "Juicy and protein-packed.", image: "grilled_chicken.png" },
+      { title: "Fish Curry", desc: "Lightly spiced and omega-3 rich.", image: "fish_curry.png" }
     ]
   }
 };
@@ -925,7 +925,7 @@ function closeRecipeModal() {
 }
 
 
-// 🌿 Health Recommendations (Improved UI Version)
+// 🌿 Health Recommendations 
 function getHealthRecommendations() {
  // const initialHealthMessage = document.getElementById('initial-diet-message');
   const initialHealthMessage = document.getElementById('initial-health-message');
@@ -1064,7 +1064,7 @@ setTimeout(() => {
 }
 
 
-// 🥗 Diet Recommendations (Improved UI Version)
+// 🥗 Diet Recommendations
 function getDietRecommendations() {
   const initialDietMessage = document.getElementById('initial-diet-message');
   const recommendationResults = document.getElementById('recommendation-results');
@@ -1177,19 +1177,6 @@ recommendationResults.innerHTML = `
     </button>
   </div>
 `;
-
- /* // attach click event after button is added
-document.getElementById("download-meal-plan").addEventListener("click", () => {
-  const element = document.getElementById("recommendation-results");
-  const opt = {
-    margin: 0.5,
-    filename: "Meal_Plan.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
-  };
-  html2pdf().set(opt).from(element).save();
-}); */
 
   // ✅ safer PDF button (no refresh issue)
 setTimeout(() => {
