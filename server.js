@@ -14,7 +14,6 @@ const Port = 3000;
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 // Connect to DB
 connectDB();
 
