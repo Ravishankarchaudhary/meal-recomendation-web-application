@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <h2>Register</h2>
-    <form action="/register" method="post">
+    <form id="signupForm" action="/register" method="post">
       <div class="input-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Choose a username" required>
@@ -30,5 +30,26 @@
       <p class="redirect">Already have an account? <a href="/login">Login</a></p>
     </form>
   </div>
+
+  <script>
+document.getElementById("signupForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Stop form submission
+
+  const password = document.getElementById("password").value;
+
+  // Strong Password Regex
+  const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+  if (!strongPassword.test(password)) {
+    alert("Use uppercase, lowercase, number , special character & minimum length(8) ");
+    return; // Stop submit
+  }
+
+  // Strong password → Submit form
+  this.submit();
+});
+</script>
+
+
 </body>
 </html>

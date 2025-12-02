@@ -51,6 +51,21 @@ app.get("/homepage", (req, res) => {
 app.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
+
+    // 🚨 Strong Password Regex
+    const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+   if (!strongPassword.test(password)) {
+
+    // console.log("❌ Weak Password Attempt:", password);
+    
+      return res.json({
+        success: false,
+        message: "Weak Password! Must include uppercase, lowercase, number & special character."
+      });
+    }
+       
+    
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({ username, email, password: hashedPassword });
