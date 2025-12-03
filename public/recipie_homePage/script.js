@@ -895,8 +895,6 @@ function searchRecipes() {
 }
 
 
-
-
 // Open modal
 function openRecipeModal(recipeId) {
   const recipe = dummyRecipes.find(r => String(r.id) === String(recipeId));
@@ -1030,22 +1028,64 @@ recommendationResults.innerHTML = `
 // ✅ PDF button (safe, works every time without refresh)
 setTimeout(() => {
   const downloadBtn = document.getElementById("download-meal-plan");
-  if (downloadBtn) {
-    downloadBtn.onclick = () => {
-      const element = document.getElementById("recommendation-results");
-      const opt = {
-        margin: 0.5,
-        filename: "Meal_Plan.pdf",
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
-      };
-      html2pdf().set(opt).from(element).save();
+  if (!downloadBtn) return;
+
+  downloadBtn.onclick = () => {
+    const element = document.getElementById("recommendation-results");
+    if (!element) return;
+
+    const btn = document.getElementById("download-meal-plan");
+
+    // ---- SAVE OLD STYLES ----
+    const old = {
+      position: element.style.position,
+      top: element.style.top,
+      left: element.style.left,
+      marginTop: element.style.marginTop,
+      maxHeight: element.style.maxHeight,
+      overflow: element.style.overflow,
     };
-  }
+
+    const oldBtnDisplay = btn ? btn.style.display : null;
+
+    // ---- HIDE BUTTON IN PDF ----
+    if (btn) {
+      btn.style.display = "none";
+    }
+
+    // ---- FORCE CONTENT TO START FROM TOP ----
+    element.style.position = "static";
+    element.style.top = "0";
+    element.style.left = "0";
+    element.style.marginTop = "0";
+    element.style.maxHeight = "none";
+    element.style.overflow = "visible";
+
+    const opt = {
+      margin: 0.5,
+      filename: "Meal_Plan.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: {
+        scale: 2,
+        scrollY: 0
+      },
+      jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+      pagebreak: { mode: ["css", "legacy"] }
+    };
+
+    html2pdf()
+      .set(opt)
+      .from(element)
+      .save()
+      .then(() => {
+        // ---- RESTORE ORIGINAL STYLES ----
+        Object.assign(element.style, old);
+        if (btn && oldBtnDisplay !== null) {
+          btn.style.display = oldBtnDisplay;
+        }
+      });
+  };
 }, 100);
-
-
 
     } else {
       recommendationResults.innerHTML = `
@@ -1181,22 +1221,65 @@ recommendationResults.innerHTML = `
   // ✅ safer PDF button (no refresh issue)
 setTimeout(() => {
   const downloadBtn = document.getElementById("download-meal-plan");
-  if (downloadBtn) {
-    downloadBtn.onclick = () => {
-      const element = document.getElementById("recommendation-results");
-      const opt = {
-        margin: 0.5,
-        filename: "Meal_Plan.pdf",
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
-      };
-      html2pdf().set(opt).from(element).save();
-    };
-  }
- }, 100);
+  if (!downloadBtn) return;
 
-     } else {
+  downloadBtn.onclick = () => {
+    const element = document.getElementById("recommendation-results");
+    if (!element) return;
+
+    const btn = document.getElementById("download-meal-plan");
+
+    // ---- SAVE OLD STYLES ----
+    const old = {
+      position: element.style.position,
+      top: element.style.top,
+      left: element.style.left,
+      marginTop: element.style.marginTop,
+      maxHeight: element.style.maxHeight,
+      overflow: element.style.overflow,
+    };
+
+    const oldBtnDisplay = btn ? btn.style.display : null;
+
+    // ---- HIDE BUTTON IN PDF ----
+    if (btn) {
+      btn.style.display = "none";
+    }
+
+    // ---- FORCE CONTENT TO START FROM TOP ----
+    element.style.position = "static";
+    element.style.top = "0";
+    element.style.left = "0";
+    element.style.marginTop = "0";
+    element.style.maxHeight = "none";
+    element.style.overflow = "visible";
+
+    const opt = {
+      margin: 0.5,
+      filename: "Meal_Plan.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: {
+        scale: 2,
+        scrollY: 0
+      },
+      jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+      pagebreak: { mode: ["css", "legacy"] }
+    };
+
+    html2pdf()
+      .set(opt)
+      .from(element)
+      .save()
+      .then(() => {
+        // ---- RESTORE ORIGINAL STYLES ----
+        Object.assign(element.style, old);
+        if (btn && oldBtnDisplay !== null) {
+          btn.style.display = oldBtnDisplay;
+        }
+      });
+  };
+}, 100);
+  } else {
       recommendationResults.innerHTML = `
         <div class="text-center py-10">
           <h3 class="text-2xl font-semibold text-gray-800 mb-4">Recommended Meal Plan</h3>
